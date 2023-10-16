@@ -1,0 +1,23 @@
+.ploadProductImages {
+  background-color: rgb(103, 192, 103);
+  padding: 6px;
+  font-weight: 900;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.reset {
+  background-color: rgb(209, 61, 61);
+  padding: 6px;
+  font-weight: 900;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.imageUplodeDivStyle {
+  background-color: white;
+}
