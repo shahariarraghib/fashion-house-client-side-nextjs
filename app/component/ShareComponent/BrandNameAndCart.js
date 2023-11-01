@@ -10,8 +10,11 @@ import BrandLogo from "../../../assest/logo/brandLogo.png";
 
 // CSS Style Import
 import styles from "../../../style/brandNameAndCart.module.css";
+import { selectCartCount } from "@/app/redux/features/cart/cartSlice";
+import { useSelector } from "react-redux";
 
 const BrandNameAndCart = () => {
+  const cartCount = useSelector(selectCartCount);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -68,44 +71,46 @@ const BrandNameAndCart = () => {
               </Link>
             </div>
             <div className="hidden md:flex space-x-4">
-              <div className={`${styles.shoppingCartWrapper}`}>
-                <div
-                  className={`${styles.shoppingCartStyle} flex items-center  px-4 text-gayr-300 py-2 rounded-md text-sm font-medium`}
-                >
-                  {shoppingCartEffect ? (
-                    <>
-                      <div className={`${styles.shopping} mr-2 `}>
-                        <AiOutlineShopping
-                          className={`${styles.shoppingIcon} h-5 w-5 mb-0.5`}
-                        />
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      <div className="mr-2">
-                        <AiOutlineShopping
-                          className="h-5 w-5 mb-0.5"
-                          aria-hidden="true"
-                        />
-                      </div>
-                    </>
-                  )}
+              <Link href="/shoppingCartPage">
+                <div className={`${styles.shoppingCartWrapper}`}>
                   <div
-                    onMouseEnter={openshoppingCartEffect}
-                    onMouseLeave={closeshoppingCartEffect}
+                    className={`${styles.shoppingCartStyle} flex items-center  px-4 text-gayr-300 py-2 rounded-md text-sm font-medium`}
                   >
-                    <span>Shopping Cart</span>
-                  </div>
+                    {shoppingCartEffect ? (
+                      <>
+                        <div className={`${styles.shopping} mr-2 `}>
+                          <AiOutlineShopping
+                            className={`${styles.shoppingIcon} h-5 w-5 mb-0.5`}
+                          />
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="mr-2">
+                          <AiOutlineShopping
+                            className="h-5 w-5 mb-0.5"
+                            aria-hidden="true"
+                          />
+                        </div>
+                      </>
+                    )}
+                    <div
+                      onMouseEnter={openshoppingCartEffect}
+                      onMouseLeave={closeshoppingCartEffect}
+                    >
+                      <span>Shopping Cart</span>
+                    </div>
 
-                  <div
-                    onMouseEnter={openshoppingCartEffect}
-                    onMouseLeave={closeshoppingCartEffect}
-                    className={`${styles.cartAmountStyle}`}
-                  >
-                    <span>0</span>
+                    <div
+                      onMouseEnter={openshoppingCartEffect}
+                      onMouseLeave={closeshoppingCartEffect}
+                      className={`${styles.cartAmountStyle}`}
+                    >
+                      <span>{cartCount}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
 
               <div className={`${styles.shoppingCartWrapper}`}>
                 <div

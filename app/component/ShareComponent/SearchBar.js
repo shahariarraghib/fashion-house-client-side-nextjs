@@ -11,7 +11,7 @@ const SearchBar = () => {
   console.log(isDrawerOpen);
 
   return (
-    <div className={`${styles.searchBarPosition}`}>
+    <div className={`${styles.searchBarPosition} `}>
       <nav className="bg-white border-gray-200">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-end mx-auto p-4">
           <div className="flex md:order-2">

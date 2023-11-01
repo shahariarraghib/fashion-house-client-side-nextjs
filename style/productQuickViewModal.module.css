@@ -1,0 +1,58 @@
+.fontSize {
+  font-family: Poppins, Bangla1056, sans-serif;
+}
+.modalBody {
+  margin-top: 80px;
+  height: 800px;
+  display: flex;
+}
+.modalImageStyle {
+  max-width: 500px;
+}
+
+.productName {
+  font-size: 20px;
+  color: #232323;
+  font-weight: 600;
+}
+
+.soldInLastHours {
+  color: #e95144;
+  font-size: 12px;
+}
+
+.availability {
+  color: gray;
+  font-size: 12px;
+  margin-top: 20px;
+}
+.description {
+  color: gray;
+  font-size: 12px;
+  margin-top: 20px;
+}
+.price {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.imagecover {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid rgb(182, 174, 174);
+  margin: 10px;
+
+  object-fit: cover;
+  object-position: center right;
+}
+.DetailsColor {
+  font-size: 12px;
+  margin-right: 7px;
+}
+
+.pickedProductDetailsColor {
+  color: gray;
+  font-size: 12px;
+}

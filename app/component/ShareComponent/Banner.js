@@ -3,9 +3,10 @@ import styles from "../../../style/banner.module.css";
 import Image from "next/image";
 
 import bannerModel from "../../../assest/images/bannerModel.png";
+
 const Banner = () => {
   return (
-    <div className={`${styles.bannerBackground}  `}>
+    <div className={`${styles.bannerBackground} `}>
       <div className="lg:flex tems-center justify-center">
         <div
           className={`${styles.FashionHouseDivLeft} flex items-center justify-center p-24`}

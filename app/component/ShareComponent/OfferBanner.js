@@ -3,7 +3,7 @@ import { BsLightningCharge } from "react-icons/bs";
 
 const OfferBanner = () => {
   return (
-    <div class="marquee-w">
+    <div class="marquee-w ">
       <div class="marquee">
         <span> This is an infinitely sliding text example&nbsp;</span>
       </div>
