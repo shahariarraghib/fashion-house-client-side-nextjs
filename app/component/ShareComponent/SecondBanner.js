@@ -1,13 +1,18 @@
 import React from "react";
-import styles from "../../../style/banner.module.css";
+import styles from "../../../style/secondBanner.module.css";
+import secondBannerModel from "../../../assest/images/secondBannerModel.png";
 import Image from "next/image";
-
-import bannerModel from "../../../assest/images/bannerModel.png";
-
-const Banner = () => {
+const SecondBanner = () => {
   return (
-    <div className={`${styles.bannerBackground} `}>
+    <div className={`${styles.secondBannerBackground} `}>
       <div className="lg:flex items-center justify-center">
+        <div class={`${styles.imageDiv}`}>
+          <Image
+            src={secondBannerModel}
+            className={`${styles.brandImageStyle}`}
+          ></Image>
+        </div>
+
         <div
           className={`${styles.FashionHouseDivLeft} flex items-center justify-center p-24`}
         >
@@ -32,16 +37,9 @@ const Banner = () => {
             </div>
           </div>
         </div>
-
-        <div class={`${styles.imageDiv}`}>
-          <Image
-            src={bannerModel}
-            className={`${styles.brandImageStyle}`}
-          ></Image>
-        </div>
       </div>
     </div>
   );
 };
 
-export default Banner;
+export default SecondBanner;

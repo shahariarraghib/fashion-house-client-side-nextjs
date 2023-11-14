@@ -1,0 +1,18 @@
+.animationhr {
+  border: 1px solid #232323;
+  width: 100%;
+}
+.trandingNow {
+  color: #232323;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.wiewAll {
+  color: #232323;
+  font-size: 12px;
+  /* font-weight: bold; */
+}
+.dotStyle {
+  background-color: blue;
+}

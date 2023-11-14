@@ -1,0 +1,33 @@
+.secondBannerBackground {
+  background-color: #f0e9e0;
+}
+.brandImageStyle {
+  height: 700px;
+  width: auto;
+  animation: brandImageStyle 1s ease-out 1s;
+}
+
+@keyframes brandImageStyle {
+  0% {
+    transform: scale(1.5, 1.5);
+  }
+
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+.FashionHouseH2 {
+  font-size: 40px;
+  line-height: 40px;
+  font-weight: bolder;
+  color: #232323;
+  font-style: normal;
+}
+
+.FashionHouseP {
+  width: 300px;
+  font-size: 12px;
+  color: #232323;
+  line-height: 20px;
+}

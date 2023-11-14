@@ -20,3 +20,68 @@
   border-top-color: rgb(207, 45, 45);
   animation: spin 1s infinite linear;
 }
+
+.backgroundStyleDivGetProduct {
+  overflow: hidden;
+  height: 200px;
+}
+.backgroundStyleImageGetProduct {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 200px;
+  align-items: center;
+  justify-content: center;
+}
+
+.backgroundStyleDivGetProduct .backgroundStyleImageGetProduct:hover {
+  -webkit-transform: scale(1.6);
+  -moz-transform: scale(1.6);
+  -o-transform: scale(1.6);
+  transform: scale(1.1);
+  transition: 1.6s;
+}
+.backgroundStyleDivGetProduct .backgroundStyleImageGetProduct {
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  width: 400px;
+}
+
+.filterNameStyle {
+  display: flex;
+  justify-content: center;
+  /* align-items: center !important; */
+  padding: 90px;
+  color: white;
+  font-weight: 500;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.filterNameStyle11 {
+  background: linear-gradient(currentColor 0 0) 0 100% / var(--d, 0) 3px
+    no-repeat;
+  cursor: pointer;
+}
+.filterNameStyle11:hover {
+  --d: 100%;
+}
+
+.animationhr {
+  border: 1px solid #232323;
+  width: 100%;
+}
+.trandingNow {
+  color: #232323;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.wiewAll {
+  color: #232323;
+  font-size: 12px;
+  /* font-weight: bold; */
+}

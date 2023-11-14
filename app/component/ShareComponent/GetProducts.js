@@ -1,6 +1,6 @@
 "use client";
 import { Buffer } from "buffer";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useGetProductQuery } from "@/app/redux/features/api/apiSlice";
 import styles from "../../../style/getProduct.module.css";
 import ProductQuickViewModal from "../ProductQuickView/ProductQuickViewModal";
@@ -11,40 +11,139 @@ import {
 } from "@/app/redux/features/cart/cartSlice";
 import Image from "next/image";
 
+// image input
+import manFilterBackgroundImage from "../../../assest/images/manFilterBackgroundImage.PNG";
+import womanFilterBackgroundImage from "../../../assest/images/womanFilterBackgroundImage.png";
+import babyFilterBackgroundImage from "../../../assest/images/babyFilterBackgroundImage.jpg";
+import { filterProduct } from "@/app/redux/features/filter/filterSlice";
+
 const GetProducts = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
   const [showModal, setShowModal] = React.useState(false);
   const [productData, setSroductData] = useState();
-  const [imageShowByClick, setimageShowByClick] = useState(1);
+  const [imageShowByClick, setimageShowByClick] = useState(0);
   const { data, isLoading } = useGetProductQuery();
+  const filters = useSelector(filterProduct);
+  let brands = filters.payload.filter.filters.brands[0];
+  const [getProductData, setProductData] = useState();
 
+  console.log(brands);
   // if (isLoading) {
   //   return (
 
   //   );
   // }
 
+  let content;
+
+  useEffect(() => {
+    if (data) {
+      setProductData(data);
+    }
+  }, [data]);
+
+  // if (getProductData) {
+  //   content = getProductData?.filter((product) => console.log(product));
+  // }
+
+  // console.log(content);
+
   return (
     <>
       <div>
         <div className="container mx-auto lg:px-40">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div className="bg-gray-200 p-4">
-              <div>
-                <Image
-                  src="https://www.js-craft.io/wp-content/uploads/2023/06/biker_cat.webp"
-                  objectFit="cover"
-                  alt="Picture of the author"
-                  width={500}
-                  height={100}
-                  className=""
-                />
-                <p>Welcome to the Cart</p>
+            <div className={`${styles.backgroundStyleDivGetProduct}`}>
+              <div
+                className={`${styles.backgroundStyleImageGetProduct}`}
+                style={{
+                  backgroundImage: `url(${manFilterBackgroundImage.src})`,
+                }}
+              >
+                <div className={`${styles.filterNameStyle}`}>
+                  <p
+                    className={`${styles.filterNameStyle11}`}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      dispatch(filterProduct("man"));
+                    }}
+                  >
+                    Man
+                  </p>
+                </div>
               </div>
             </div>
-            <div className="bg-gray-200 p-4">Column 2</div>
-            <div className="bg-gray-200 p-4">Column 3</div>
+            <div className={`${styles.backgroundStyleDivGetProduct}`}>
+              <div
+                className={`${styles.backgroundStyleImageGetProduct}`}
+                style={{
+                  backgroundImage: `url(${womanFilterBackgroundImage.src})`,
+                }}
+              >
+                {" "}
+                <div
+                  className={`${styles.filterNameStyle}`}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    dispatch(filterProduct("woman"));
+                  }}
+                >
+                  <p className={`${styles.filterNameStyle11}`}>Woman</p>
+                </div>
+              </div>
+            </div>
+            <div className={`${styles.backgroundStyleDivGetProduct}`}>
+              <div
+                className={`${styles.backgroundStyleImageGetProduct}`}
+                style={{
+                  backgroundImage: `url(${babyFilterBackgroundImage.src})`,
+                }}
+              >
+                {" "}
+                <div
+                  className={`${styles.filterNameStyle}`}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    dispatch(filterProduct("baby"));
+                  }}
+                >
+                  <p className={`${styles.filterNameStyle11}`}>Baby</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-3 gap-4 justify-center">
+            <div
+              className={`${styles.FashionHouseHR} flex justify-center items-center m-4`}
+            >
+              <hr className={`${styles.animationhr}`} />
+            </div>
+
+            <div
+              className={`${styles.FashionHouseHR} flex justify-center items-center m-4`}
+            >
+              <div>
+                <h3
+                  className={`${styles.trandingNow} flex justify-center items-center`}
+                >
+                  NEW ARRIVALS
+                </h3>
+                <a
+                  href=""
+                  className={`${styles.wiewAll} flex justify-center items-center`}
+                >
+                  <p>view all</p>
+                </a>
+              </div>
+            </div>
+
+            <div
+              className={`${styles.FashionHouseHR} flex justify-center items-center m-4`}
+            >
+              <hr className={`${styles.animationhr}`} />
+            </div>
           </div>
         </div>
         {isLoading ? (
@@ -58,14 +157,14 @@ const GetProducts = () => {
             <div
               className={`${styles.overflow} grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 `}
             >
-              {data?.data.map((product) => (
+              {getProductData?.data.map((product) => (
                 <div key={product.id} className="flex flex-col items-center">
                   <figure className="snip1268">
                     <div className="image">
                       <img
                         className="inner-img"
-                        src={`data:image/jpeg;base64,${Buffer.from(
-                          product?.images[imageShowByClick].data
+                        src={`data:image/jpeg;base64,${Buffer?.from(
+                          product?.images[imageShowByClick]?.data
                         ).toString("base64")}`}
                         alt="Image"
                       />
@@ -80,8 +179,7 @@ const GetProducts = () => {
                             type="button"
                             onClick={(event) => {
                               event.preventDefault();
-                              setShowModal(true),
-                                setSroductData(product, event);
+                              setShowModal(true), setSroductData(product);
                             }}
                           >
                             Open large modal
@@ -151,13 +249,3 @@ const GetProducts = () => {
 };
 
 export default GetProducts;
-// {
-//    <img
-//   src={`data:image/jpeg;base64,${Buffer.from(
-//     data?.data[0].images[0].data
-//   ).toString("base64")}`}
-//   alt="Image"
-//   width="100" // You can adjust width and height as needed
-//   height="100"
-// />;
-// }

@@ -4,6 +4,7 @@ import Slider from "react-slick";
 import { AiFillFire } from "react-icons/ai";
 import { TbCurrencyTaka } from "react-icons/tb";
 import styles from "../../../style/productQuickViewModal.module.css";
+
 const ProductQuickViewModal = ({ productData, showModal, setShowModal }) => {
   const [imageColorShowByClick, setimageColorShowByClick] = useState(0);
   const [imageSizeShowByClick, setimageSizeShowByClick] = useState(0);
