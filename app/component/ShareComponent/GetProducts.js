@@ -13,7 +13,7 @@ import Image from "next/image";
 
 // image input
 import manFilterBackgroundImage from "../../../assest/images/manFilterBackgroundImage.PNG";
-import womanFilterBackgroundImage from "../../../assest/images/womanFilterBackgroundImage.png";
+import womanFilterBackgroundImage from "../../../assest/images/womanFilterBackgroundImage.PNG";
 import babyFilterBackgroundImage from "../../../assest/images/babyFilterBackgroundImage.jpg";
 import { filterProduct } from "@/app/redux/features/filter/filterSlice";
 
