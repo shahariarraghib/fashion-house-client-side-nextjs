@@ -3,7 +3,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
-0;
+
 
 const inter = Inter({ subsets: ["latin"] });
 
