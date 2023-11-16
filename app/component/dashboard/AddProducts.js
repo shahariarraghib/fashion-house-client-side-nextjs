@@ -24,7 +24,7 @@ const AddProducts = () => {
   }
 
   return (
-    <div className=" sm:p-4">
+    <div className="bg-gray-100 sm:p-4">
       {/* mt-10 sm:mx-auto sm:w-full sm:max-w-sm */}
       <div className="bg-cream text-charcoal min-h-screen font-sans leading-normal overflow-x-hidden lg:overflow-auto">
         <div className="flex-1 md:p-0 lg:pt-2 lg:px-2 md:ml-2 flex flex-col">

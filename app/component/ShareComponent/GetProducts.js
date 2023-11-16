@@ -170,24 +170,38 @@ const GetProducts = () => {
                       />
                       ;
                       <div className="icons">
-                        <a href="#">
-                          <i className="ion-star"></i>
-                        </a>
-                        <a href="#">
-                          <button
-                            className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                            type="button"
-                            onClick={(event) => {
-                              event.preventDefault();
-                              setShowModal(true), setSroductData(product);
-                            }}
-                          >
-                            Open large modal
-                          </button>
-                        </a>
-                        <a href="#">
-                          <i className="ion-search"></i>
-                        </a>
+                        <button
+                          className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-2 py-0 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                          type="button"
+                          // onClick={(event) => {
+                          //   event.preventDefault();
+                          //   setShowModal(true), setSroductData(product);
+                          // }}
+                        >
+                          Add to WishList
+                        </button>
+
+                        <button
+                          className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-2 py-0 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                          type="button"
+                          onClick={(event) => {
+                            event.preventDefault();
+                            setShowModal(true), setSroductData(product);
+                          }}
+                        >
+                          Quick View
+                        </button>
+
+                        <button
+                          className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-2 py-0 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                          type="button"
+                          // onClick={(event) => {
+                          //   event.preventDefault();
+                          //   setShowModal(true), setSroductData(product);
+                          // }}
+                        >
+                          Add to WishList
+                        </button>
                       </div>
                       <a href="#" className="add-to-cart">
                         <button
@@ -216,7 +230,7 @@ const GetProducts = () => {
                             <div key={image.id} className="flex justify-center">
                               <div
                                 className="wrapper"
-                                onClick={() => setimageShowByClick(index)}
+                                onClick={() => setimageShowByClick(0)}
                               >
                                 <img
                                   className="imagecover"

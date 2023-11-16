@@ -4,12 +4,65 @@ import Slider from "react-slick";
 import { AiFillFire } from "react-icons/ai";
 import { TbCurrencyTaka } from "react-icons/tb";
 import styles from "../../../style/productQuickViewModal.module.css";
-
+import { FiChevronsLeft } from "react-icons/fi";
+import { FiChevronsRight } from "react-icons/fi";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 const ProductQuickViewModal = ({ productData, showModal, setShowModal }) => {
   const [imageColorShowByClick, setimageColorShowByClick] = useState(0);
   const [imageSizeShowByClick, setimageSizeShowByClick] = useState(0);
   console.log(productData);
-  console.log(imageColorShowByClick);
+
+  // for arrow style
+
+  var settings = {
+    arrows: false,
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    initialSlide: 0,
+
+    appendDots: (dots) => (
+      <div
+        className={`${styles.dotStyle} lg:mt-7`}
+        style={{
+          borderRadius: "10px",
+          // padding: "10px",
+        }}
+      >
+        <ul style={{ margin: "0px" }}> {dots} </ul>
+      </div>
+    ),
+
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 0,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          arrows: false,
+          slidesToShow: 3,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          arrows: false,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
 
   return (
     <>
@@ -56,7 +109,26 @@ const ProductQuickViewModal = ({ productData, showModal, setShowModal }) => {
                               alt="Image"
                             />
                           </div>
-                          <div></div>
+                          <div>
+                            <>
+                              <Slider {...settings}>
+                                {productData?.images?.map((image) => (
+                                  <>
+                                    <div
+                                      className={`${styles.modalImageStyleSliderStyle}`}
+                                    >
+                                      <img
+                                        src={`data:image/jpeg;base64,${Buffer.from(
+                                          image?.data
+                                        ).toString("base64")}`}
+                                        alt="Image"
+                                      />
+                                    </div>
+                                  </>
+                                ))}
+                              </Slider>
+                            </>
+                          </div>
                         </div>
                       </div>
 
@@ -66,7 +138,6 @@ const ProductQuickViewModal = ({ productData, showModal, setShowModal }) => {
                           {productData.name}
                         </h4>
                         <p className={`${styles.description}`}>
-                          {" "}
                           {productData.description}
                         </p>
                         <p
@@ -84,7 +155,7 @@ const ProductQuickViewModal = ({ productData, showModal, setShowModal }) => {
                           </p>
 
                           <p className={`${styles.productMaterials}`}>
-                            Product Materials:{" "}
+                            Product Materials:
                             <span className="ml-2">
                               {productData.productMaterials}
                             </span>
@@ -177,6 +248,8 @@ const ProductQuickViewModal = ({ productData, showModal, setShowModal }) => {
                             ))}
                           </div>
                         </div>
+
+                        <div></div>
                       </div>
                     </div>
                   </div>
