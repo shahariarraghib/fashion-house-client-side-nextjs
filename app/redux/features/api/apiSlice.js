@@ -7,7 +7,9 @@ export const productApi = createApi({
     baseUrl: "https://fashion-house-server-side-node-js-mvc.vercel.app/",
   }),
   endpoints: (builder) => ({
-    getProduct: builder.query({ query: () => "product/get" }),
+    getProduct: builder.query({
+      query: () => ({ url: "product/get", method: "GET" }),
+    }),
 
     addUserInfo: builder.mutation({
       query: (data) => ({
