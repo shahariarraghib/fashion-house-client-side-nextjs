@@ -5,11 +5,22 @@ import Image from "next/image";
 import styles from "../../../style/searce.module.css";
 // images import
 import bangladeshFlageImage from "../../../assest/images/BangladeshFlag.webp";
+import { useGetProductQuery } from "@/app/redux/features/api/apiSlice";
 
 const SearchBar = () => {
   const [isDrawerOpen, setIsMenuOpen] = useState(false);
   console.log(isDrawerOpen);
+  const { data, isLoading } = useGetProductQuery();
+  const [searchQuery, setSearchQuery] = useState("");
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
 
+  const filteredData = data?.data.filter((item) =>
+    item.name.toLowerCase().includes(searchQuery?.toLowerCase())
+  );
+
+  console.log(filteredData);
   return (
     <div className={`${styles.searchBarPosition} `}>
       <nav className="bg-white border-gray-200">
@@ -58,12 +69,26 @@ const SearchBar = () => {
                 </svg>
                 <span className="sr-only">Search icon</span>
               </div>
-              <input
-                type="text"
-                id="search-navbar"
-                className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50"
-                placeholder="Search..."
-              />
+              <div className="dropdown">
+                <input
+                  type="text"
+                  id="search-navbar"
+                  tabIndex={0}
+                  className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50"
+                  placeholder="Search..."
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                />
+
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content z-[1] menu p-2 shadow bg-base-100 "
+                >
+                  {filteredData?.map((item) => (
+                    <li key={item.id}>{item.name}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
           <div
@@ -102,7 +127,7 @@ const SearchBar = () => {
                     href="#"
                     className="block mt-1.5 py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 "
                   >
-                    Customer Service 091 234-ELLA
+                    Customer Service 01600-000000
                   </div>
                 </div>
                 <div>

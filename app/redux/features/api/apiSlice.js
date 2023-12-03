@@ -4,7 +4,7 @@ export const productApi = createApi({
   reducerPath: "FashionHouseApi",
 
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://fashion-house-server-side-node-js-mvc.vercel.app/",
+    baseUrl: "http://localhost:8000/",
   }),
   endpoints: (builder) => ({
     getProduct: builder.query({
@@ -16,6 +16,14 @@ export const productApi = createApi({
         url: "user/signup",
         method: "POST",
         body: data,
+      }),
+    }),
+
+    deleteProductData: builder.mutation({
+      query: (data) => ({
+        url: "product/:id",
+        method: "DELETE",
+        body: { data },
       }),
     }),
 
@@ -81,4 +89,5 @@ export const {
   useUserLoginInfoMutation,
   useAddProductMutation,
   useGetProductQuery,
+  useDeleteProductDataMutation,
 } = productApi;
