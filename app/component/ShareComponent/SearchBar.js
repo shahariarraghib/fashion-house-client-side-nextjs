@@ -85,7 +85,9 @@ const SearchBar = () => {
                   className="dropdown-content z-[1] menu p-2 shadow bg-base-100 "
                 >
                   {filteredData?.map((item) => (
-                    <li key={item.id}>{item.name}</li>
+                    <li key={item.id} className="p-2">
+                      {item.name}
+                    </li>
                   ))}
                 </ul>
               </div>

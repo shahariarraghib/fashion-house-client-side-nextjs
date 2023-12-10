@@ -4,7 +4,7 @@ export const productApi = createApi({
   reducerPath: "FashionHouseApi",
 
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:8000/",
+    baseUrl: "https://fashion-house-server-side-node-js-mvc.vercel.app/",
   }),
   endpoints: (builder) => ({
     getProduct: builder.query({

@@ -7,15 +7,20 @@ import {
   selectCartTotal,
 } from "@/app/redux/features/cart/cartSlice";
 import { Buffer } from "buffer";
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import BrandNameAndCart from "../ShareComponent/BrandNameAndCart";
 import Navbar from "../ShareComponent/navbar";
+import CheckoutModal from "../Checkout/CheckoutModal";
 
 const ShoppingCart = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
   const cartTotalPrice = useSelector(selectCartTotal);
+
+  const [showModal, setShowModal] = React.useState(false);
+  const [productData, setSroductData] = useState();
+  console.log(productData);
   return (
     <div classNameName="lg:mt-2">
       <BrandNameAndCart></BrandNameAndCart>
@@ -32,7 +37,7 @@ const ShoppingCart = () => {
                       {cartItems.length} Items
                     </h2>
                   </div>
-                  <div className="flex mt-10 mb-5">
+                  <div className="lg:flex mt-10 mb-5">
                     <h3 className="font-semibold text-gray-600 text-xs uppercase w-2/5">
                       Product Details
                     </h3>
@@ -49,7 +54,7 @@ const ShoppingCart = () => {
                   {cartItems.map((item) => (
                     <>
                       {/* {console.log(item.images[0].data)} */}
-                      <div className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
+                      <div className="lg:flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
                         <div className="flex w-2/5">
                           <div className="w-20">
                             <img
@@ -184,13 +189,24 @@ const ShoppingCart = () => {
                       <span>Total cost</span>
                       <span>{cartTotalPrice}</span>
                     </div>
-                    <button className="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">
+                    <button
+                      className="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full"
+                      onClick={(event) => {
+                        event.preventDefault();
+                        setShowModal(true), setSroductData(cartItems);
+                      }}
+                    >
                       Checkout
                     </button>
                   </div>
                 </div>
               </div>
             </div>
+            <CheckoutModal
+              productData={productData}
+              setShowModal={setShowModal}
+              showModal={showModal}
+            ></CheckoutModal>
           </div>
         </>
       ) : (
