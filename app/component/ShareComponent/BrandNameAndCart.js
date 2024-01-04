@@ -138,7 +138,7 @@ const BrandNameAndCart = () => {
                     onMouseEnter={openMyWishList}
                     onMouseLeave={closeMyWishList}
                   >
-                    <span>My Wish List</span>
+                    <span className="">My Wish List</span>
                   </div>
 
                   <div
