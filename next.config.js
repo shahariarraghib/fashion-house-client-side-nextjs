@@ -1,11 +1,19 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true,
+  poweredByHeader: false,
+  reactStrictMode: true,
+  i18n: {
+    locales: ["en", "bn"],
+    defaultLocale: "en",
   },
-  // images: {
-  //   domains: ["www.js-craft.io"],
-  // },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;
